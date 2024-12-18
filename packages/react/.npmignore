@@ -1,0 +1,56 @@
+# Node.js-specific files
+node_modules/
+npm-debug.log
+.npmrc
+
+# Editor-specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.vspscc
+*.scc
+*.ncb
+*.aps
+*.pch
+*.obj
+*.plg
+*.ilk
+*.pdb
+*.exp
+*.lib
+*.userprefs
+*.tmp
+*.bak
+*.suo
+*.SLN
+*.vssscc
+
+# Testing files
+coverage/
+test/
+*.spec.js
+*.test.js
+*.e2e.js
+
+# Build files
+build/
+dist/
+lib/
+
+# Local configuration files
+.env
+.env.*
+
+# Temporary files
+*.log
+*.tmp
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db

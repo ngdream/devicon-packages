@@ -1,0 +1,17 @@
+{
+  "name": "@devicon/react",
+  "version": "0.0.3",
+  "main": "index.js",
+  "keywords": [
+    "devicon",
+    "react",
+    "icons",
+    "components"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "react components for devicon"
+}
