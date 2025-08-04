@@ -11,6 +11,7 @@
     "release": "ts-node publish.ts",
     "build-vue": " ts-node build-vue.ts && babel tmp/vue --out-dir packages/vue --copy-files",
     "build-all": "npm run build-react && npm run build-vue",
+    "build-svelte": "ts-node build-svelte.ts && babel tmp/svelte --out-dir packages/svelte --copy-files",
     "publish": "ts-node publish.ts"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "@vue/babel-plugin-jsx": "^1.2.5",
     "@vue/cli-service": "^5.0.8",
     "react": "^18.2.0",
+    "svelte": "^5.14.4",
     "vue-template-compiler": "^2.7.16"
   },
   "keywords": [

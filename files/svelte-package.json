@@ -1,0 +1,18 @@
+{
+  "name": "@devicon/svelte",
+  "version": "0.0.2",
+  "description": "vue components for devicon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+
+  },
+  "author": "ngdream",
+  "license": "MIT",
+  "keywords": [
+    "devicon",
+    "svelte",
+    "icons",
+    "components"
+  ]
+}

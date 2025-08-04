@@ -1,2 +1,10 @@
 node_modules/
-tmp/
+
+tmp/react
+tmp/vue
+tmp/svelte
+
+packages/react
+packages/vue
+packages/svelte
+
