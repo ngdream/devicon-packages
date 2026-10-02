@@ -33,6 +33,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           test -n "$NODE_AUTH_TOKEN" || { echo "NPM_TOKEN is not configured" >&2; exit 1; }
+          dist_tag=latest
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then dist_tag=next; fi
           for package in react vue svelte; do
-            npm publish "./packages/$package" --access public
+            npm publish "./packages/$package" --access public --tag "$dist_tag"
           done
