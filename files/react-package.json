@@ -1,6 +1,10 @@
 {
   "name": "@devicon/react",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngdream/devicon-packages"
+  },
   "main": "index.js",
   "files": ["index.js", "index.d.ts", "*/"],
   "peerDependencies": {

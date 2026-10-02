@@ -1,6 +1,10 @@
 {
   "name": "@devicon/vue",
   "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngdream/devicon-packages"
+  },
   "description": "vue components for devicon",
   "main": "index.js",
   "type": "module",

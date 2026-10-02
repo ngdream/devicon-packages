@@ -1,6 +1,10 @@
 {
   "name": "@devicon/svelte",
   "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngdream/devicon-packages"
+  },
   "description": "svelte components for devicon",
   "main": "index.js",
   "type": "module",
