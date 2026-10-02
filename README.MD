@@ -99,7 +99,11 @@ The compiled packages will be available in the `packages/react/` and `packages/v
 
 The [build workflow](.github/workflows/build.yml) runs on pushes to `master`, pull requests, manual dispatch and every Monday. It uploads `packages/core`, `packages/react`, `packages/vue` and `packages/svelte` as one downloadable Actions artifact. It does not publish to npm or commit generated files.
 
-The [publish workflow](.github/workflows/publish.yml) runs only when a `vMAJOR.MINOR.PATCH` tag is pushed. It rebuilds all packages, sets the React, Vue and Svelte versions from the tag, and publishes those three packages to npm. Core remains an internal build source. Configure a GitHub Actions secret named `NPM_TOKEN` with permission to publish `@devicon/react`, `@devicon/vue` and `@devicon/svelte` before pushing a release tag. A tag can be created with `git tag v1.2.3` followed by `git push origin v1.2.3`.
+The [publish workflow](.github/workflows/publish.yml) runs when a `vMAJOR.MINOR.PATCH` or prerelease tag is pushed. It rebuilds all packages, sets the React, Vue and Svelte versions from the tag, and publishes those three packages to npm through GitHub OIDC trusted publishing. Core remains an internal build source. Each npm package must trust the `ngdream/devicon-packages` repository and `publish.yml` workflow. No npm token is needed in GitHub Actions. A tag can be created with `git tag -a v1.2.3 -m "Release 1.2.3"` followed by `git push origin v1.2.3`. Stable tags publish under `latest`; prerelease tags publish under `next`.
+
+### Project website
+
+The [project website](https://ngdream.github.io/devicon-packages/) is a static HTML and CSS introduction to this repository. GitHub Pages serves `index.html` and `styles.css` from the root of `master`.
 
 ### Using the Generated Packages
 

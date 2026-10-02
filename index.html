@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1925" />
+    <meta
+      name="description"
+      content="Devicon Packages transforme les icônes SVG de Devicon en composants prêts à utiliser avec React, Vue et Svelte."
+    />
+    <title>Devicon Packages — Icônes pour React, Vue et Svelte</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="dark-shell">
+      <header class="site-header container">
+        <a class="brand" href="#accueil" aria-label="Devicon Packages, accueil">
+          <span class="brand-mark" aria-hidden="true">d<span>:</span></span>
+          <span>devicon<span class="brand-muted">/packages</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="#packages">Packages</a>
+          <a href="#fonctionnement">Fonctionnement</a>
+          <a href="#publication">Publication</a>
+        </nav>
+        <a
+          class="header-link"
+          href="https://github.com/ngdream/devicon-packages"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Dépôt GitHub <span aria-hidden="true">↗</span></a>
+      </header>
+    </div>
+
+    <main id="contenu">
+      <div class="dark-shell">
+        <section class="hero container" id="accueil" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="status-dot"></span> Générateur open source</p>
+            <h1 id="hero-title">Les icônes Devicon.<br /><span>Prêtes à importer.</span></h1>
+            <p class="hero-lead">
+              Ce dépôt récupère les SVG du projet Devicon et les transforme en composants
+              pour React, Vue et Svelte. Une seule source d’icônes, trois packages à utiliser
+              directement dans vos applications.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#packages">Choisir un package <span aria-hidden="true">↗</span></a>
+              <a class="button button-outline" href="https://github.com/ngdream/devicon-packages" target="_blank" rel="noopener noreferrer">Voir le code source</a>
+            </div>
+            <p class="hero-note">Projet indépendant construit à partir des icônes de <a href="https://github.com/devicons/devicon" target="_blank" rel="noopener noreferrer">Devicon</a>.</p>
+          </div>
+
+          <div class="hero-visual" aria-label="Exemple d’installation et d’utilisation du package React">
+            <div class="orb orb-one" aria-hidden="true"></div>
+            <div class="orb orb-two" aria-hidden="true"></div>
+            <div class="code-window">
+              <div class="window-bar">
+                <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>votre-projet / App.tsx</span>
+                <span class="window-badge">React</span>
+              </div>
+              <pre><code><span class="code-comment">// Installez le package</span>
+<span class="code-prompt">$</span> npm i @devicon/react
+
+<span class="code-comment">// Importez seulement l’icône utile</span>
+<span class="code-purple">import</span> ReactOriginalIcon
+  <span class="code-purple">from</span> <span class="code-green">"@devicon/react/react/original"</span>;
+
+<span class="code-purple">&lt;ReactOriginalIcon</span> size=<span class="code-green">"2em"</span> <span class="code-purple">/&gt;</span></code></pre>
+            </div>
+            <div class="source-chip"><span class="chip-icon" aria-hidden="true">◇</span> Devicon SVG <span aria-hidden="true">→</span> composants</div>
+          </div>
+        </section>
+      </div>
+
+    <section class="intro-band" aria-label="En bref">
+      <div class="container intro-grid">
+        <p><strong>1 source</strong><span>Icônes officielles Devicon</span></p>
+        <p><strong>3 packages</strong><span>React · Vue · Svelte</span></p>
+        <p><strong>0 copie manuelle</strong><span>Les SVG sont récupérés au build</span></p>
+      </div>
+    </section>
+
+    <section class="section packages-section container" id="packages" aria-labelledby="packages-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">LES PACKAGES</p>
+          <h2 id="packages-title">Votre framework, vos icônes.</h2>
+        </div>
+        <p>Chaque package expose les icônes Devicon sous forme de composants. Importez un composant par son chemin ou depuis l’entrée principale du package.</p>
+      </div>
+      <div class="package-grid">
+        <article class="package-card react-card">
+          <div class="card-top"><span class="framework-symbol" aria-hidden="true">◉</span><span class="card-index">01 / 03</span></div>
+          <h3>React</h3>
+          <p>Composants React pour afficher une icône dans votre interface, avec des propriétés comme <code>size</code> et <code>color</code> selon l’icône.</p>
+          <div class="install-command"><span>npm install @devicon/react</span></div>
+          <a href="https://www.npmjs.com/package/@devicon/react" target="_blank" rel="noopener noreferrer">Voir sur npm <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="package-card vue-card">
+          <div class="card-top"><span class="framework-symbol" aria-hidden="true">◭</span><span class="card-index">02 / 03</span></div>
+          <h3>Vue</h3>
+          <p>Composants Vue 3 générés à partir des mêmes SVG, avec une structure d’import cohérente avec le package React.</p>
+          <div class="install-command"><span>npm install @devicon/vue</span></div>
+          <a href="https://www.npmjs.com/package/@devicon/vue" target="_blank" rel="noopener noreferrer">Voir sur npm <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="package-card svelte-card">
+          <div class="card-top"><span class="framework-symbol" aria-hidden="true">⌁</span><span class="card-index">03 / 03</span></div>
+          <h3>Svelte</h3>
+          <p>Composants <code>.svelte</code> prêts à intégrer dans un projet Svelte, générés depuis la même source Devicon.</p>
+          <div class="install-command"><span>npm install @devicon/svelte</span></div>
+          <a href="https://www.npmjs.com/package/@devicon/svelte" target="_blank" rel="noopener noreferrer">Voir sur npm <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="process-section" id="fonctionnement" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading process-heading">
+          <div>
+            <p class="section-kicker">SOUS LE CAPOT</p>
+            <h2 id="process-title">Ce que fait ce dépôt.</h2>
+          </div>
+          <p>Le dépôt contient les scripts de génération. Les icônes et les composants produits sont reconstruits à chaque build.</p>
+        </div>
+        <ol class="process-list">
+          <li><span class="step-number">01</span><div><h3>Récupérer Devicon</h3><p><code>build-core</code> télécharge la branche <code>master</code> de <a href="https://github.com/devicons/devicon" target="_blank" rel="noopener noreferrer">devicons/devicon</a> dans <code>tmp/devicon</code>.</p></div></li>
+          <li><span class="step-number">02</span><div><h3>Former le dossier core</h3><p>Le dossier <code>icons/</code> et le fichier <code>devicon.json</code> sont copiés dans <code>packages/core</code>. Core sert de source interne au build.</p></div></li>
+          <li><span class="step-number">03</span><div><h3>Générer les composants</h3><p>Les scripts React, Vue et Svelte transforment les SVG en composants et préparent chacun des trois packages.</p></div></li>
+          <li><span class="step-number">04</span><div><h3>Publier une version</h3><p>Un tag Git <code>vX.Y.Z</code> déclenche GitHub Actions, qui reconstruit les packages et publie React, Vue et Svelte sur npm via OIDC.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section release-section container" id="publication" aria-labelledby="release-title">
+      <div class="release-copy">
+        <p class="section-kicker">MISES À JOUR</p>
+        <h2 id="release-title">Les nouvelles icônes arrivent au prochain build.</h2>
+        <p>Pas besoin de copier les fichiers Devicon dans ce dépôt. <code>npm run build-all</code> récupère la version courante de Devicon, puis régénère les trois packages.</p>
+        <p>Pour publier une nouvelle version npm, créez un nouveau tag et poussez-le sur GitHub. Un tag de préversion est publié sous <code>next</code> ; une version stable sous <code>latest</code>.</p>
+        <a class="text-link" href="https://github.com/ngdream/devicon-packages/actions" target="_blank" rel="noopener noreferrer">Suivre les builds GitHub Actions <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="release-panel">
+        <p class="panel-label">EXEMPLE · VERSION STABLE</p>
+        <pre><code>git tag -a v1.0.0 -m "Release 1.0.0"
+git push origin v1.0.0</code></pre>
+        <div class="panel-divider"></div>
+        <p>Le workflow construit les packages à partir des icônes Devicon disponibles au moment de son exécution.</p>
+      </div>
+    </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div><a class="brand footer-brand" href="#accueil"><span class="brand-mark" aria-hidden="true">d<span>:</span></span><span>devicon<span class="brand-muted">/packages</span></span></a><p>Des composants pour React, Vue et Svelte à partir des icônes Devicon.</p></div>
+        <div class="footer-links"><a href="https://github.com/ngdream/devicon-packages" target="_blank" rel="noopener noreferrer">Code source ↗</a><a href="https://github.com/devicons/devicon" target="_blank" rel="noopener noreferrer">Devicon ↗</a><a href="#accueil">Retour en haut ↑</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
