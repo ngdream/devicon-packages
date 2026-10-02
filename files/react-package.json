@@ -2,6 +2,10 @@
   "name": "@devicon/react",
   "version": "0.0.1",
   "main": "index.js",
+  "files": ["index.js", "index.d.ts", "*/"],
+  "peerDependencies": {
+    "react": ">=18"
+  },
   "keywords": [
     "devicon",
     "react",

@@ -7,12 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "build-react": "ts-node build-react.ts && babel tmp/react --out-dir packages/react --copy-files",
-    "release": "ts-node publish.ts",
-    "build-vue": " ts-node build-vue.ts && babel tmp/vue --out-dir packages/vue --copy-files",
-    "build-all": "npm run build-react && npm run build-vue",
-    "build-svelte": "ts-node build-svelte.ts && babel tmp/svelte --out-dir packages/svelte --copy-files",
-    "publish": "ts-node publish.ts"
+    "build-core": "ts-node build-core.ts",
+    "build-react": "ts-node build-react.ts && babel tmp/react --out-dir packages/react --copy-files --delete-dir-on-start",
+    "build-vue": "ts-node build-vue.ts && babel tmp/vue --out-dir packages/vue --copy-files --delete-dir-on-start",
+    "build-all": "npm run build-core && npm run build-react && npm run build-vue && npm run build-svelte",
+    "build-svelte": "ts-node build-svelte.ts && babel tmp/svelte --out-dir packages/svelte --copy-files --delete-dir-on-start"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.9",

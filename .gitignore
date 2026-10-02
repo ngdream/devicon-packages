@@ -1,9 +1,10 @@
 node_modules/
+devicon.json
 
-tmp/react
-tmp/vue
-tmp/svelte
+tmp/
 
+packages/core/devicon.json
+packages/core/icons
 packages/react
 packages/vue
 packages/svelte

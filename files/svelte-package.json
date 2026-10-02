@@ -1,8 +1,13 @@
 {
   "name": "@devicon/svelte",
   "version": "0.0.2",
-  "description": "vue components for devicon",
+  "description": "svelte components for devicon",
   "main": "index.js",
+  "type": "module",
+  "files": ["index.js", "**/*.svelte"],
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
 

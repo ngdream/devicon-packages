@@ -2,7 +2,8 @@
   "name": "@devicon/core",
   "version": "0.0.1",
   "description": "core package of devicon",
-  "main": "index.js",
+  "private": true,
+  "files": ["icons/", "devicon.json"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

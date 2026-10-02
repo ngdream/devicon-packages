@@ -33,12 +33,13 @@ import svgo from "svgo";
     versions: { svg: string[] };
     aliases: { base: string; alias: string[] }[];
   }[] = JSON.parse(
-    (await fsAsync.readFile(`${__dirname}/devicon.json`)).toString()
+    (await fsAsync.readFile(`${__dirname}/packages/core/devicon.json`)).toString()
   );
 
   // Process each icon
-  await Promise.all(
-    deviconConfig.map(async (entry) => {
+  for (let offset = 0; offset < deviconConfig.length; offset += 8) {
+    await Promise.all(
+      deviconConfig.slice(offset, offset + 8).map(async (entry) => {
       const iconPath = path.join(iconsDir, entry.name);
       if (fs.existsSync(iconPath)) {
         await fsAsync.mkdir(`${outputDir}/${entry.name}`);
@@ -151,8 +152,9 @@ export default ${vueName};`;
           })
         );
       }
-    })
-  );
+      })
+    );
+  }
 
   // Create the root index.js
   await fsAsync.writeFile(

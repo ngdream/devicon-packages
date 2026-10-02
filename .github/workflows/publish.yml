@@ -1,0 +1,38 @@
+name: Publish packages to npm
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    if: github.repository == 'ngdream/devicon-packages'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run build-all
+      - name: Set package versions from tag
+        run: node scripts/prepare-release.mjs "$GITHUB_REF_NAME"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: Publish React, Vue and Svelte
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          test -n "$NODE_AUTH_TOKEN" || { echo "NPM_TOKEN is not configured" >&2; exit 1; }
+          for package in react vue svelte; do
+            npm publish "./packages/$package" --access public
+          done

@@ -1,34 +1,39 @@
-# React and Vue Icon Package Generator
+# React, Vue and Svelte Icon Package Generator
 
-This project automates the creation of both React and Vue 3-compatible icon libraries from SVG assets. The generated packages include components that support customization and ease of integration into React and Vue applications.
+This project builds framework packages from the official [Devicon](https://github.com/devicons/devicon) SVG icons. `build-core` downloads the latest official `master` snapshot into `tmp/devicon`, then forms `packages/core` from its `icons/` directory and `devicon.json`.
 
 ## Features
-- Converts SVG icons to React and Vue components using JSX.
+- Converts SVG icons to React, Vue and Svelte components.
 - Optimizes SVGs with SVGO for performance.
 - Supports props for `size` and `color` (for plain icons).
-- Generates JavaScript and TypeScript files for both React and Vue components.
+- Generates JavaScript and TypeScript declarations for React and Vue components.
 - Creates single entry points (`index.js` and `index.d.ts`) for streamlined imports.
-- Compiled packages are stored in the `packages` directory for React and Vue.
+- Generated packages are stored in `packages/react`, `packages/vue` and `packages/svelte`.
 
 ## Directory Structure
 
 ```
 project-root/
-├── packages/core/icons/      # Directory containing the source SVG icons
+├── packages/core/icons/      # SVG icons copied from Devicon
+├── packages/core/devicon.json # Configuration copied from Devicon
 ├── packages/react/           # Compiled React package
 ├── packages/vue/             # Compiled Vue package
+├── packages/svelte/          # Svelte package
+├── tmp/devicon/              # Downloaded Devicon snapshot
 ├── tmp/react/                # Temporary output directory for React components
 ├── tmp/vue/                  # Temporary output directory for Vue components
-├── devicon.json              # Configuration file for icons
-├── react-package.json        # Package.json template for the React library
-├── vue-package.json          # Package.json template for the Vue library
+├── tmp/svelte/               # Temporary output directory for Svelte components
+├── files/                    # Package manifests and README templates
+├── build-core.ts             # Download and form packages/core
 ├── build-react.ts            # Script to generate React components
 ├── build-vue.ts              # Script to generate Vue components
-├── publish.ts                # Script to publish the packages
+├── build-svelte.ts           # Script to generate Svelte components
+├── scripts/prepare-release.mjs # Set all package versions from a release tag
+├── .github/workflows/        # Build artifacts and npm release workflows
 ```
 
 ## Prerequisites
-- Node.js (v14 or higher)
+- Node.js 20 or higher
 - TypeScript
 
 ## Installation
@@ -41,26 +46,20 @@ project-root/
 
 2. Install dependencies:
    ```bash
-   npm install
+   npm ci
    ```
 
 ## Usage
 
-### Preparing the Icons
-1. Place your SVG icons in the `packages/core/icons/` directory.
-2. Ensure `devicon.json` is configured correctly for your icons. Each entry should look like this:
-   ```json
-   [
-     {
-       "name": "icon-name",
-       "color": "#000000",
-       "versions": { "svg": ["plain", "line"] },
-       "aliases": [
-         { "base": "plain", "alias": ["line"] }
-       ]
-     }
-   ]
-   ```
+### Build all packages
+
+```bash
+npm run build-all
+```
+
+This runs `build-core`, then builds React, Vue and Svelte. `build-core` replaces the generated `packages/core/icons` directory and copies the upstream `devicon.json` to `packages/core/devicon.json`. It preserves `packages/core/package.json`.
+
+To refresh only the Devicon source, run `npm run build-core`. Run it before an individual framework build when you want the latest icons.
 
 ### Generating the React Package
 Run the following script to generate the React components:
@@ -94,7 +93,13 @@ After running the scripts, the `tmp/react/` and `tmp/vue/` directories will cont
 - Root `index.js`: Exports all components.
 - Root `index.d.ts`: TypeScript definitions for all components.
 
-The compiled packages will be available in the `packages/react/` and `packages/vue/` directories.
+The compiled packages will be available in the `packages/react/` and `packages/vue/` directories. Svelte components are generated in `packages/svelte/`.
+
+### GitHub Actions
+
+The [build workflow](.github/workflows/build.yml) runs on pushes to `master`, pull requests, manual dispatch and every Monday. It uploads `packages/core`, `packages/react`, `packages/vue` and `packages/svelte` as one downloadable Actions artifact. It does not publish to npm or commit generated files.
+
+The [publish workflow](.github/workflows/publish.yml) runs only when a `vMAJOR.MINOR.PATCH` tag is pushed. It rebuilds all packages, sets the React, Vue and Svelte versions from the tag, and publishes those three packages to npm. Core remains an internal build source. Configure a GitHub Actions secret named `NPM_TOKEN` with permission to publish `@devicon/react`, `@devicon/vue` and `@devicon/svelte` before pushing a release tag. A tag can be created with `git tag v1.2.3` followed by `git push origin v1.2.3`.
 
 ### Using the Generated Packages
 
@@ -104,17 +109,12 @@ The compiled packages will be available in the `packages/react/` and `packages/v
    cd packages/react
    ```
 
-2. Publish the package to npm:
-   ```bash
-   npm publish
-   ```
-
-3. Install the package in your React project:
+2. Install the released package in your React project:
    ```bash
    npm install <your-package-name>
    ```
 
-4. Import and use the icons in your React components:
+3. Import and use the icons in your React components:
    ```jsx
    import { IconNamePlain } from '<your-package-name>';
 
@@ -133,17 +133,12 @@ The compiled packages will be available in the `packages/react/` and `packages/v
    cd packages/vue
    ```
 
-2. Publish the package to npm:
-   ```bash
-   npm publish
-   ```
-
-3. Install the package in your Vue project:
+2. Install the released package in your Vue project:
    ```bash
    npm install <your-package-name>
    ```
 
-4. Import and use the icons in your Vue components:
+3. Import and use the icons in your Vue components:
    ```vue
    <template>
      <IconNamePlain size="2em" color="#ff0000" />
@@ -160,9 +155,7 @@ The compiled packages will be available in the `packages/react/` and `packages/v
 
 ## Development Notes
 
-- **Adding New Icons:**
-  - Add the SVG files to the `packages/core/icons/` directory.
-  - Update `devicon.json` to include details for the new icons.
+- **Adding New Icons:** Add them to the upstream Devicon repository; the next `build-core` will import the official release from `master`.
 
 - **Customization:**
   - Modify the SVGO plugins or the JSX templates in `build-react.ts` and `build-vue.ts` to customize the output.
